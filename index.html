@@ -59,7 +59,7 @@
         </div>
         <div class="w-layout-hflex button-group">
           <a href="https://chinese.nationalbitcoin.org/get-chinese-bitcoin.html" class="button w-button">Get Chinese BTC</a>
-          <a href="https://github.com/nationalbitcoin/chinesebitcoin/releases" class="button-secondary w-button">Mine Chinese BTC</a>
+          <a href="https://github.com/nationalbitcoin/chinesebitcoin/releases" class="button-secondary w-button">Staking Chinese BTC</a>
         </div>
       </div>
       <div class="w-layout-vflex heading-main-full-2"><img src="images/map-cn.svg" loading="lazy" alt="">
@@ -143,7 +143,7 @@
           <div class="link-text">Chinese Bitcoin Explorer</div>
         </div>
       </a>
-      <a href="#" class="link-with-icon w-inline-block">
+      <a href="manifesto.html" class="link-with-icon w-inline-block">
         <div class="w-layout-hflex link-with-icon-wrap">
           <div class="link-text">Manifesto and Economic Justification</div>
         </div>
@@ -170,27 +170,20 @@
             <div class="feature-title">About CNBTC build</div>
             <div class="label-3">We recommend building the binary files of Chinese Bitcoin on any modern Linux x64 distribution. Instructions:</div>
             <div class="feature-description">apt install git build-essential libtool autotools-dev automake pkg-config bsdmainutils python3<br><br>git clone https://github.com/nationalbitcoin/africanbitcoin/<br><br>cd depends &amp;&amp; make &amp;&amp; cd ..<br><br>./autogen.sh<br><br>CONFIG_SITE=$PWD/depends/x86_64-/share/config.site ./configure --prefix=/<br><br>Make<br><br>Instead of &quot;platform name&quot; replace it with the name of your platform.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div data-w-id="0030d87f-12a0-828c-69e1-6469d66b7543" style="opacity:0" class="w-layout-vflex feature2-block">
-      <h2 class="heading-2">For Miners</h2>
-      <div class="w-layout-hflex paragraph-wrapper">
-        <div class="w-layout-hflex link-with-icon-wrap">
-          <div class="w-layout-vflex feature-text">
+            <br><br>
             <div class="feature-title">The block reward calculation algorithm</div>
             <div class="feature-description">The main part of the block reward is calculated according to the formula 12.5 &gt;&gt; (n / 100000), where n is the number of blocks in the chain, &gt;&gt; denotes bit shift, and / denotes integer division. To generate a proof-of-stake block, miners must find a transaction output in their wallet that satisfies the following condition:<br>‍<br>hash(nStakeModifier + blockFrom.nTime + txPrev.vout.hash + txPrev.vout.n + nTime) &lt; bnTarget * nWeight<br>The plus sign (+) denotes concatenation of values serialized as a byte vector.<br><br>Hashable parameters:<br>nStakeModifier is a modifier calculated using accumulated entropy. It is designed to eliminate the possibility of calculating hashes for outputs that have not yet received enough confirmations. <br>The modifier is calculated using hashes of previous block headers.<br>blockFrom.nTime - the time of creation of the block in which the input was confirmed. txPrev.vout.hash - the hash of the transaction in which the output was created.<br>txPrev.vout.n is the index of the output in the transaction referenced by txPrev.vout.hash.<br>The nTime is the current Unix timestamp.<br>‍<br>These parameters are used precisely because the source of their origin is transparent and available for verification to anyone interested. For example, it is not possible to use the hash of the block or the hash of the transaction being created, as this would lead to a degeneration of the system into a proof-of-work scenario.<br><br>So, the right part of the inequality is the product of the current target (which can be calculated as the maximum target divided by the current difficulty) and the output weight. The weight is determined as the product of the output value in satoshis and its age in seconds.<br><br>Additional requirements:<br>The transaction must have at least 25 confirmations before it can be used for finding solutions. The output can contain P2PK, P2PKH or P2CS scripts. Any other outputs are not suitable and are ignored by the client when searching for solutions. If the miner is looking for solutions himself, the reward is divided proportionally between him and 10 randomly selected consensus participants. This is done for a more fair distribution of rewards and additional incentives to participate. Rewards found using P2CS outputs are not shared with anyone and belong entirely to the finder of the block.<br>‍<br>In addition to proof-of-stake, a proof-of-authority mechanism is provided as a backup option.<br>PoA blocks are created centrally and have a fixed weight of one. The proof-of-authority mechanism is necessary in the early stages of network deployment when there are not enough users with wallets containing inputs that meet the proof-of-stake criteria. In the future, it will be possible to get rid of it. To protect network participants from abuses, in case of competition between PoA and PoS, the PoS block always wins. This happens because for PoS blocks, their staking contribution is added to the total chain work, while for PoA, a constant equal to one is added. For this reason, any PoS block can beat a chain consisting of millions of PoA blocks.<br>In other words, PoA is not a security provider in itself, and this role belongs entirely to the owners of coins participating in the proof-of-stake consensus.v</div>
+
           </div>
         </div>
       </div>
     </div>
+ 
     <div class="divider"></div>
     <div class="div-block">
       <div data-w-id="f36d130a-0f79-3049-6513-52291aa02b5a" style="opacity:0" class="w-layout-hflex button-group">
-        <a href="#" class="button w-button">Get Chinese BTC</a>
-        <a href="https://github.com/nationalbitcoin/chinesebitcoin" class="button-secondary w-button">Mine Chinese BTC</a>
+        <a href="get-chinese-bitcoin.html" class="button w-button">Get Chinese BTC</a>
+        <a href="https://github.com/nationalbitcoin/chinesebitcoin/releases" class="button-secondary w-button">Staking Chinese BTC</a>
       </div>
     </div>
   </div>
